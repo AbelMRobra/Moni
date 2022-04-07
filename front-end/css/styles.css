@@ -1,0 +1,79 @@
+/*
+@font-face{
+	font-family: "irlandesa";
+	src: url("font/irlandesa.eot");
+	src: local('?'),
+		url("font/irlandesa.woff") format("woff"),
+		url("font/irlandesa.ttf") format("truetype"),
+
+}
+*/
+
+
+.dataTables_filter input {
+	color: black;
+
+  }
+
+.table_row:hover {
+	cursor: pointer;
+}
+
+body{
+	font-family: 'Indie Flower', cursive;
+	font-size: 16px;
+	color: #353344;
+	background-color: #F5F5F5;
+}
+h2{
+	color: #F5F5F5;
+}
+h4{
+	color: #F5F5F5;
+}
+label{
+	color: #F5F5F5;
+}
+
+
+
+#imagen{
+	border-radius: 100%;
+	height: 30px;
+	border: 2px solid #8737AA;
+}
+
+#trello{
+	height: 20px;
+}
+
+#content{
+	width: 100%;
+	margin: 0 auto;
+}
+
+#title{
+	position: relative;
+	width: 80%;
+	margin:0 auto;
+}
+
+#title h1{
+	font-size: 3em;
+	text-align: center;
+	width: 100%;
+	display: inline-block;
+	margin: 15px 0px 15px 0px;
+}
+
+
+#title{
+	width: 100%;
+	margin-bottom: 15px;
+	text-align: center;
+}
+#title div.twitter{
+	margin: 20px 0px;
+}
+
+/* From cssbuttons.io by @adamgiebl */

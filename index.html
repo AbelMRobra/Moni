@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moni test</title>
+
+    <link rel="shortcut icon" href="front-end/imagens/money.ico" />
+    <link rel="stylesheet" href="front-end/css/styles.css">
+    <link rel="stylesheet" href="front-end/css/styles_bg.css">
+	<link rel="stylesheet" href="front-end/css/normalize.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+</head>
+<body>
+
+    <div class="stars" style="height: 50vh;">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+
+      </div>
+
+    <div id="content" style="height: 110vh;">
+        <div id="title">
+            <h1 class="display-5 text-light"><b class="font-bold text-primary">Moni</b> Api integration</h1>
+        </div>
+
+        <div id="main-page" class="m-2 row col-12 justify-content-center text-right">
+
+            <div class="card col-12 col-lg-6">
+                <div class="m-2 card-body text-center font-bold">
+                  Complete el formulario para consultar su <b class="text-info">disponibilidad</b> para un prestamo
+                    <div class="row text-left col-12">
+
+                        <form id="form-moni" action="" class="m-4 col-12">
+                        <div class="mb-3">
+                            <label for="first_name" class="form-label text-dark">Nombre</label>
+                            <input id="first_name" type="text" class="form-control" required>
+                            </div>
+        
+                        <div class="mb-3">
+                            <label for="last_name" class="form-label text-dark">Apellido</label>
+                            <input id="last_name" type="text" class="form-control" required>
+                            </div>
+        
+                            <div class="mb-3">
+                            <label for="dni" class="form-label text-dark">Nº de documento</label>
+                            <input id="dni" type="number" min="1" step="1"  class="form-control" placeholder="Ej: 37725830" required>
+                            </div>
+        
+                        <div class="mb-3">
+                            <label for="email" class="form-label text-dark">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Ej: example.moni@moni.com.ar" required>
+                            <div id="emailHelp" class="form-text ml-2"><i>**Nosotros no compartiremos tu email con nadie mas</i></div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="gender" class="form-label text-dark">Genero</label>
+                            <select id="gender" class="custom-select" aria-label="Default select example" required>
+                            <option style="display: none;" selected>Seleccione una opción</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+        
+                        <div class="mb-3">
+                            <label for="amount" class="form-label text-dark">Monto solicitado</label>
+                            <input id="amount" type="number" min="1" step="0.01"  class="form-control" required>
+                        </div>
+        
+                        <button class="btn btn-primary" type="button" onclick="service.send_client_data()">Consultar</button>
+                        </form>
+
+                        <div class="m-4 col-12 text-center font-bold">
+                            Si eres un usuario puedes logearte <a href="#" class="text-success" onclick="template.change_login()">aqui</a>
+                        </div>
+<!--         
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                        Launch demo modal
+                        </button> -->
+
+
+                    </div>
+                </div>
+
+                  <!-- Modal -->
+                    
+
+            </div>
+
+            
+        </div>
+        
+        <div id="login-page" style="display: none;" class="m-2 row col-12 justify-content-center">
+            <div class="card col-10 col-lg-4">
+                <div class="m-2 card-body text-center">
+                    <img src="front-end/imagens/main.gif"/ width="150px">
+
+                    <div class="mb-3 d-flex flex-column justify-content-center">
+                        <label for="username" class="form-label text-dark">Nombre de usuario</label>
+                        <input id="username" type="text"  class="form-control" required>
+                    </div>
+
+                    <div class="mb-3 d-flex flex-column justify-content-center">
+                        <label for="password" class="form-label text-dark">Contraseña</label>
+                        <input id="password" type="password" class="form-control" required>
+                        </div>
+
+                    <button class="btn btn-success btn-lg" type="button" onclick="service.login()">Log in</button>
+
+                    <div class="m-2 card-body text-center font-bold">
+                        Para volver atras puedes tocar <a href="#" class="text-info" onclick="template.change_main()">aqui</a>
+                      </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id="admin-page" style="display: none;"  class="m-2 row col-12 justify-content-center">
+            <div class="card col-10">
+                <div class="m-2 card-body">
+                    <h4 class="display-6 card-title text-secondary"><span class="lstick m-r-20"></span>Registro de usuarios</h4>
+
+                    <div class="table-responsive mt-4">
+
+                        <table id="users" class="table table-hover" style="width:100%">
+                            <thead>
+                                <tr class="table-primary">
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Genero</th>
+                                    <th>D.N.I</th>
+                                    <th>Email</th>
+                                    <th>Monto</th>
+                                    <th>status</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody style="font-size: 14px; font-weight: 450;">
+   
+                            </tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="modal fade" id="client" tabindex="-1" role="dialog" aria-labelledby="clientTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Editar cliente</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                <input id="up_id" style="display: none;" type="number" class="form-control">
+                                <div class="mb-3">
+                                    <label for="up_first_name" class="form-label text-dark">Nombre</label>
+                                    <input id="up_first_name" type="text" class="form-control">
+                                    </div>
+                
+                                <div class="mb-3">
+                                    <label for="up_last_name" class="form-label text-dark">Apellido</label>
+                                    <input id="up_last_name" type="text" class="form-control">
+                                </div>
+                             
+                                <div class="mb-3">
+                                    <label for="up_email" class="form-label text-dark">Email address</label>
+                                    <input type="up_email" class="form-control" id="up_email">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="up_gender" class="form-label text-dark">Genero</label>
+                                    <select id="up_gender" class="custom-select" aria-label="Default select example">
+                                    <option style="display: none;">Seleccione una opción</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                
+                                <div class="mb-3">
+                                    <label for="up_amount" class="form-label text-dark">Monto solicitado</label>
+                                    <input id="up_amount" type="number" min="1" step="0.01"  class="form-control">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button id="boton_delete" type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" onclick="service.upload_data()" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="m-4 text-center font-bold">
+                        Para volver al formulario principal <a href="#" class="text-info" onclick="template.change_main()">aqui</a>
+                    </div>
+
+                </div>  
+            </div>
+        </div>
+
+
+        <footer class="mt-2">
+            <div class="text-center text-light p-3">
+                © 2022 Test-moni
+            </div>
+            <div class="text-center text-light p-3">
+                <a href="https://www.flaticon.com/free-icons/money" title="money icons">Money icons created by Dimitry Miroliubov - Flaticon</a>
+            </div>
+        </footer>
+    </div>
+
+    
+
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>var exports = {};</script>
+    <script>var require = () => {};</script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="front-end/js/services.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#users').DataTable({
+                    "language": {
+                        "search": "Buscar"
+                    },
+    
+                "info": false,
+                "order": [[ 2, "desc" ]],
+                dom: 'Bfrtip',  
+            });
+        });
+    </script>
+</body>
+</html>
