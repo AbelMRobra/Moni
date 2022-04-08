@@ -148,10 +148,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'administracion', 'static', 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static', 'staticfiles')
 
 STATICFILES_DIRS = [ 
-os.path.join(BASE_DIR, 'administracion', "static"),
+os.path.join(BASE_DIR, 'static'),
 ]
 
 ENDPOINT_MONI = 'https://api.moni.com.ar/api/v4/scoring/pre-score/'
