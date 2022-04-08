@@ -4,10 +4,15 @@ from django.core.validators import MinValueValidator
 # Create your models here.
 class Applicant(models.Model):
 
+    class Gender(models.TextChoices):
+        MASCULINO= "Masculino"
+        FEMENINO= "Femenino"
+        OTRO= "Otro"
+
     first_name = models.CharField(max_length=50, verbose_name="Nombre del aplicante")
     last_name = models.CharField(max_length=50, verbose_name="Apellido del aplicante")
     dni = models.IntegerField(verbose_name="Nº de documento (DNI)", unique=True)
-    gender = models.CharField(max_length=50, verbose_name="Genero del aplicante")
+    gender = models.CharField(choices=Gender.choices, max_length=50, verbose_name="Genero del aplicante")
     email = models.EmailField(verbose_name="Email de contacto")
     amount = models.FloatField(
         validators=[MinValueValidator(0.0)]

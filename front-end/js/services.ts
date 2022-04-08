@@ -63,6 +63,8 @@ var template
         create_table:Function = (response:ResponseGet[]) => {
             var table = $('#users').DataTable();
 
+            table.clear().draw();
+
             response.forEach(element => {
                 let rowNode = table.row.add( [
                     `<b class="text-info table_row" onClick="service.open_modal(${element.id})" data-toggle="modal" data-target="#client">${element.first_name}</b>`,
