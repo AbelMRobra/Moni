@@ -3,12 +3,11 @@ from rest_framework import status
 
 
 class ApiMoniTestCase(APITestCase):
-
+    
     def setUp(self):
         self.url_api = '/api/api-applicants/'
 
     def test_post_data(self):
-        # A template is created
         url = self.url_api
         data = {
             "first_name": "Test",
