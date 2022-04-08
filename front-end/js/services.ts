@@ -17,7 +17,8 @@ var template
         "status":boolean
     };
 
-    const host:string = 'https://moni.xrob.online' //Local
+    // const host:string = 'https://moni.xrob.online' //Local
+    const host:string = 'http://127.0.0.1:8200' //Local
     const api_url:string = `${host}/api/api-applicants/` 
     const login_url:string = `${host}/login/`
 

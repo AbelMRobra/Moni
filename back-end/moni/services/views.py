@@ -28,7 +28,7 @@ class LoginViewset(viewsets.GenericViewSet):
             user = User.objects.get(username=username)
             if not check_password(password, user.password):
                 response = {'message': "Contraseña invalida"}
-                return Response(response, status=status.HTTP_404_NOT_HTTP_400_BAD_REQUESTFOUND)
+                return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
             token, _ = Token.objects.get_or_create(user=user)
             return Response(token.key, status=status.HTTP_200_OK)
