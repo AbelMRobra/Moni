@@ -13,7 +13,7 @@ class ApiMoniTestCase(APITestCase):
         self.url_api = '/api/api-applicants/'
         self.url_login = '/login/'
         self.url_moni_api = f"{settings.ENDPOINT_MONI}"
-        self.credential = settings.CREDENTIAL_MONI
+        self.credential = f"{settings.CREDENTIAL_MONI}"
 
     def test_moni_api(self):
         url = self.url_moni_api + '37725830'
